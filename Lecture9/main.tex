@@ -1,0 +1,295 @@
+\graphicspath{{./Lecture9/}}
+
+\section{Recap}
+
+We learned how to write a function as a fourier series, in the following format:
+
+$$f(x) = \frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos( \frac{n \pi x}{L}) + \sum_{n = 1}^\infty b_n \sin(\frac{n \pi x}{L})$$
+
+We have the following formulas:
+
+$$a_0 = \frac{1}{L} \int_{-L}^L f(x) dx$$
+
+$$a_n = \frac{1}{L} \int_{-L}^L f(x) \cos(\frac{n \pi x}{L}) dx$$
+
+$$b_n = \frac{1}{L} \int_{-L}^L f(x) \sin(\frac{n \pi x}{L}) dx$$
+
+\section{Solving the Heat / Diffusion Equation}
+
+Examples are posted in the pdf slides posted. 
+
+\subsection{Example 1}
+
+Solve the initial boundary value problem (IBVP)
+\begin{equation}
+\label{Heat Equation}
+    \begin{matrix} \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2} & 0 < x < L; & t > 0 \end{matrix}
+\end{equation}
+
+
+$$u(0,t) = u(L,t) = 0$$
+
+$$u(x,0) = f(x)$$
+
+We need to use the method of separation of variables. 
+
+$$u(x,t) = X(x) T(t)$$
+
+Taking the partial derivative with respect to $t$:
+
+$$\rightarrow u_t = X(x) \dot{T} (t)$$
+
+where dots are derivatives with respect to time. 
+
+$$u_x = X'(x) T(t)$$
+
+$$u_{xx} = X''(x) T(t)$$
+
+Now, we substitute this into the PDE equation \ref{Heat Equation}
+
+$$X \dot{T} = \alpha X'' T$$
+
+Now, we divide by $\alpha XT$:
+
+$$\frac{\dot{T}}{\alpha T} = \frac{X''}{X}$$
+
+The left hand side of the equation is a function of $t$, and the right hand side is a function of $x$. In what condition are they equal?
+
+The only way that theycan both be equal is if:
+\begin{equation}
+\label{Heat constant}
+    \frac{1}{\alpha} \frac{\dot{T}}{T} = \frac{X''}{X} = - \lambda
+\end{equation}
+
+
+Where $\lambda$ is a constant. 
+
+\hfill
+
+Now, let's work on boundary conditions:
+
+$$u(0,t) = X(0) T(t) = 0$$
+
+$$u(L,t) = X(L) T(t) = 0$$
+
+
+\begin{center}
+    Hence, $X(0) = X(L) = 0$
+\end{center}
+
+From \ref{Heat constant}, we get two equations: 
+
+\begin{itemize}
+    \item 1 - BVP
+    \item 2 - IVP
+\end{itemize}
+
+\subsubsection{BVP}
+
+$$\frac{X''}{X} = -\lambda \Rightarrow X'' + \lambda X = 0$$
+
+with $X(0) = X(L) = 0$. This is a dirichlet boundary condition (BVP type P1)
+
+The solution to P1:
+
+$$X(x) = X_n (x) = C_n \sin(\frac{n \pi x}{L})$$
+
+$$\lambda_n = \left( \frac{n \pi}{L}\right)^2, n \in N$$
+
+Therefore, there is a countably infinite set of $\lambda_n, X_n (x)$ as a solutiojn for the BVP. For each $\lambda_n$ we find an IVP separately:
+
+\subsubsection{IVP}
+
+$$\frac{\dot{T}}{\alpha T} = -\lambda_n \longrightarrow T_n(t) = e^{- \lambda_n \alpha t}$$
+
+is the solution to the IVP. 
+
+\subsubsection{Summary}
+
+We found, for $n = 1,2,3,...$ ($n \in N$), we found:
+
+$$u_n (x,t) = X_n (x) T_n (t) = C_n \sin \left(\frac{n \pi x}{L} \right) e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}$$
+
+This satisfies $u_t = \alpha u_{xx}$ with the conditions $u(0,t) = u(L,t) = 0$
+
+Since the PDE and boundary conditions are homogeneous, we can superimpose solution, i.e. 
+
+$$C_k u_k + C_m u_m$$
+
+
+also satisfies this problem for any constants of $C_k$ and $C_m$. 
+
+Let's extend this idea to $\infty$:
+
+$$u(x,t) = \sum_{n = 1}^\infty C_n u_n(x,t) = \sum_{n = 1}^\infty C_n \sin \left( \frac{n \pi x}{L} \right) e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}$$
+
+for constants $C_1, C_2, C_3,...$. 
+
+\textbf{How abut initial conditions} $u(x,0) = f(x)$?
+
+\begin{equation}
+    u(x,0) = \sum_{n = 1}^\infty C_n \sin \left( \frac{n \pi x}{L} \right) = f(x)
+\end{equation}
+
+How do we find $C_n$ to meet this condition?
+
+We need to find $C_n$ such that $u(x,0) = \sum_{n = 1}^\infty C_n \sin \left( \frac{n \pi x}{L} \right) = f(x)$ holds. 
+
+If we write $f(x)$ as a fourier sine series, we can match the coefficients. 
+
+Let's write $f(x)$ as a fourier sine series on $[0,L]$: i.e. 
+
+
+\begin{equation}
+    f(x) \approx \sum_{n = 1}^\infty b_n \sin(\frac{n \pi x}{L})
+\end{equation}
+
+where $b_n = \frac{2}{L} \int_0^L f(x) \sin \left( \frac{n \pi}{L} x \right) dx$
+
+\hfill
+
+$\Rightarrow$ With comparing (3) and (4) $\rightarrow C_n = b_n$
+
+Finally, the solution for IBVP is:
+
+$$u(x,t) = \sum_{n = 1}^\infty b_n \sin (\frac{n \pi x}{L}) e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}$$
+
+\begin{itemize}
+    \item Homogeneous boundary conditions (Dirichlet: $u(0,t) = u(L,t) = 0$)
+    \item Neumann: $u_x(0,t) = U_x (L,t) = 0$
+    \item if it's not equal to 0 it's inhomogeneous
+    \item If $u_t = \alpha u_{xx} + G$ it's inhomogeneous
+\end{itemize}
+
+\subsection{Example 2}
+
+Same as example 1: $f(x) = x(L - x)$, $0 < x \leq L$
+
+To solve, we use the method of separation of variables: $u(x,t) = X(x) T(t)$
+
+Step 1: $u_t = X \dot{T}$; $U_x = X' T$; $U_{xx} = X'' T$
+
+Substitute into PDE and separate variables:
+
+$$X \dot{T} = \alpha X'' T \longrightarrow \frac{\dot{T}}{\alpha T} = \frac{X''}{X} = -\lambda$$
+
+where $\lambda$ is a constant. 
+
+Step 2: Boundary conditions. 
+
+$$\begin{matrix} u(0,t) = 0 \longrightarrow X(0) = 0 \\ u(L,t) = 0 \longrightarrowX(L) = 0 \end{matrix}$$
+
+Step 3: Solve the eigenvalue problem for $X(x)$:
+
+$X'' + \lambda X = 0$, $X(0) = 0 = X(L)$
+
+Hence, the solution:
+
+$$\lambda_n = \left( \frac{n \pi}{L} \right)^2$$
+
+$$X_n = \sin(\frac{n \pi}{L} x)$$
+
+where $n \in N$
+
+Step 4: For each $\lambda_n$ find $T_n(t)$:
+
+$$\frac{1}{\alpha} \frac{\dot{T_n}}{T_n} \rightarrow T_n(t) = e^{- \alpha \lambda_n t} = e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}$$
+
+Step 5: use superposition and linearity to construct a general series:
+
+$$u(x,t) = \sum_{n  =1}^\infty C_n u_n (x,t) = \underbrace{\sum_{n = 1}^\infty C_n \sin \left( \frac{n \pi x}{L} \right) e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}}_{X_n(x) T_n(t)}$$
+
+Step 6: Apply initial conditions:
+
+$$u(x,0) = \sum_{n = 1}^\infty C_n \sin (\frac{n \pi x}{L} ) = x(L-x)$$
+
+
+Write $x(L-x)$ as a Fourier sine series: 
+
+$$x(L-x) = \sum_{n = 1}^\infty b_n \sin (\frac{n \pi x}{L} )$$
+
+$$b_n = \frac{2}{L} \int_0^L x(L-x) \sin \left( \frac{n \pi x}{L} \right) dx$$
+
+$$b_n = \left. - \frac{2}{L} x(L-x) \frac{L}{n \pi} \cos(\frac{n \pi x}{L}) \right|_{0}^{L} + \frac{2}{n \pi} \int_{0}^L (L - 2x) \cos(\frac{n \pi x}{L}) dx$$
+
+$$ = 0 + \frac{2}{n \pi} \int_0^L (L - 2x) \cos \left(\frac{n \pi x}{L} \right) dx = \left. \frac{2L}{(n \pi)^2} (L - 2x) \sin \left(\frac{n \pi x}{L} \right) \right|_{0}^L + \frac{4L}{(n \pi)^2} \int_0^L \sin \left(\frac{n \pi x}{L} \right) dx$$
+
+$$ = \left. \frac{- 4 L^2}{(n \pi)^2} \cos \left(\frac{n \pi x}{L} \right) \right|_0^L = \frac{4L^2}{(n \pi)^3} \left( (-1)^{n+1} + 1 \right)$$
+
+Step 7: Match the initial condition of the series solution ($C_n = b_n$)
+
+$$u(x,t) = \sum_{n = 1}^\infty \frac{4 L^2}{(n \pi)^3} \left( (-1)^{n+1} + 1 \right) \sin \left( \frac{n \pi x}{L} \right) e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}$$
+
+Note that all $\sin(\frac{n \pi x}{L})$ terms are linearly independent (orthogonal)
+
+\subsection{Example 3}
+
+Similar to example 1 but with Neumann boundary conditions.
+
+\textbf{Please find the examples in the pdf "Heat / diffusion examples" on Canvas}
+
+\begin{center}
+    Solution:
+\end{center}
+
+Step 1:
+
+$$u(x,t) = X(x) T(t) \rightarrow \frac{\dot T}{\alpha T} = \frac{X''}{X} = -\lambda$$
+
+Step 2:
+
+$$u_x (0,t) = X'(0) T(t) = 0 \rightarrow X'(0) = 0$$
+
+$$u_x (L,t) = X'(L) T(t) = 0 \rightarrow X'(L) = 0$$
+
+Step 3: Solve the BVP with the conditions
+
+$$X'' + \lambda X = 0$$
+
+$$X'(0) = 0 = X'(L)$$
+
+$\Rightarrow$ P2 problem. Cosine series. 
+
+$$\lambda_n = \left(\frac{n \pi}{L} \right)^2$$
+
+and $$X_n(x) = \cos(\frac{n \pi x}{L})$$ for $n \in N$
+
+and $\lambda_0 = 0; X_0 (x) = 1$
+
+\hfill
+
+\hfill
+
+Step 4: Solving the IVP
+
+For each $\lambda_n$ and $X_n$, there is a $T_n$ such that
+
+$$\frac{\dot{T_n}}{T_n} = -\alpha \lambda_n \rightarrow T_n = e^{- \alpha \lambda_n t}$$
+
+Step 5: 
+
+For $\lambda_0 = 0 \rightarrow u_0 (x,t) = 1$
+
+For $\lambda_n = \left(\frac{n \pi}{L} \right)^2 \rightarrow u_n (x,t) = \cos \left(\frac{n \pi x}{L} \right) e^{- \alpha \left(\frac{n \pi}{L} \right)^2 t}$
+
+PDE is linear and homogeneous $\Rightarrow$ we may superimpose the solutions in a linear combination:
+
+$$u(x,t) = \sum_{n = 0}^\infty d_n u_n (x,t) = d_0 + \sum_{n  =1}^\infty d_n \cos \left(\frac{n \pi x}{L} \right) e^{- \alpha \left(\frac{n \pi}{L} \right)^2 t}$$
+
+Step 6: Initial conditions
+
+$$u(x,0) = f(x) = d_0 + \sum_{n =1}^\infty d_n \cos \left(\frac{n \pi x}{L} \right)$$
+
+If we rewrite as a fourier series (cosine), we find that $d_0 = a_0 / 2$ and that $d_n = a_n$
+
+if we take the even extension of $f(x)$, to $[-L, 0]$ interval, then we know $f(x)$ has a fourier cosine series. 
+
+$$f(x) = \frac{a_0}{2} + \sum_{n = 1}^\infty \cos \left(\frac{n \pi x}{L} \right)$$
+
+$$\Rightarrow \begin{matrix} d_0 = \frac{a_0}{2}; & d_n = a_n = \frac{2}{L} \int_0^L f(x) \cos \left(\frac{n \pi x}{L} \right) dx \end{matrix}$$
+
+Step 7:
+
+Thus, the solution is 
+
+$$u(x,t) = \frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos \left(\frac{n \pi x}{L} \right) e^{- \alpha \left(\frac{n \pi}{L} \right)^2 t}$$

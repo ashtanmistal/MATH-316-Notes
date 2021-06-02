@@ -5,17 +5,21 @@
 \usepackage{pdfpages}
 \usepackage{listings}
 \usepackage{fancyhdr}
-\usepackage{import}
+\usepackage{titling}
+\usepackage[margin=1.0in]{geometry}
+
+\DeclareMathOperator\erf{erf}
+\DeclareMathOperator\erfc{erfc}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\rfoot{Page \thepage}
+\lhead{\thetitle, Lecture \thechapter}
 
 \title{MATH 316 Notes}
 \author{Ashtan Mistal}
 \date{May - June 2021}
-
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Lecture \thechapter}
-\lhead{MATH 316 Notes}
-\rfoot{Page \thepage}
 
 \begin{document}
 
@@ -24,39 +28,39 @@
 \tableofcontents{}
 
 \chapter{Lecture 1}
-\includepdf[pages=-]{MATH 316 Lecture 1.pdf}
+\input{Lecture1/main.tex}
 
 \chapter{Lecture 2}
-\includepdf[pages=-]{MATH 316 Lecture 2.pdf}
+\input{Lecture2/main.tex}
 
 \chapter{Lecture 3}
-\includepdf[pages=-]{MATH 316 Lecture 3.pdf}
+\input{Lecture3/main.tex}
 
 \chapter{Lecture 4}
-\includepdf[pages=-]{MATH 316 Lecture 4.pdf}
+\input{Lecture4/main.tex}
 
 \chapter{Lecture 5}
-\includepdf[pages=-]{MATH 316 Lecture 5.pdf}
+\input{Lecture5/main.tex}
 
 \chapter{Lecture 6}
-\includepdf[pages=-]{MATH 316 Lecture 6.pdf}
+\input{Lecture6/main.tex}
 
 \chapter{Lecture 7}
-\includepdf[pages=-]{MATH 316 Lecture 7.pdf}
+\input{Lecture7/main.tex}
 
 \chapter{Lecture 8}
-\includepdf[pages=-]{MATH 316 Lecture 8.pdf}
+\input{Lecture8/main.tex}
 
 \chapter{Lecture 9}
-\includepdf[pages=-]{MATH 316 Lecture 9.pdf}
+\input{Lecture9/main.tex}
 
 \chapter{Lecture 10}
-\includepdf[pages=-]{MATH 316 Lecture 10.pdf}
+\input{Lecture10/main.tex}
 
 \chapter{Lecture 11}
-\includepdf[pages=-]{MATH 316 Lecture 11.pdf}
+\input{Lecture11/main.tex}
 
 \chapter{Lecture 12}
-\includepdf[pages=-]{MATH 316 Lecture 12.pdf}
+\input{Lecture12/main.tex}
 
 \end{document}
