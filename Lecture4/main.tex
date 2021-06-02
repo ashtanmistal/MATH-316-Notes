@@ -1,0 +1,235 @@
+
+\section{Introduction}
+
+\subsection{Week 2:}
+
+\begin{itemize}
+    \item finish power series
+    \item Bessel's function
+    \item Intro to PDEs
+\end{itemize}
+
+\subsection{Week 3:}
+
+\begin{itemize}
+    \item Fourier series and separation of variables
+    \item Heat equations
+    \item Wave equations
+    \item Laplace equations
+\end{itemize}
+
+\subsection{Week 4:}
+
+\begin{itemize}
+    \item Boundary value problems and Sturm-Louiville Theory
+    \item Eigenfunctions and eigenvalues
+    \item Sturm-Louisvill theory for BVP
+    \item Non-homogenous boundary value problems
+\end{itemize}
+
+\subsection{Week 5:}
+
+\begin{itemize}
+    \item Numerical methods for solving PDEs
+\end{itemize}
+
+\section{Recap of Previous Week}
+
+What we're covering next was partly covered in previous lectures by Parisa:
+
+\hfill
+
+Series Solutions near a regular singular point (RSP)
+
+$$ P(x) y'' + Q(x) y' + R(x)y = 0$$
+
+We consider an expansion about a regular singular point $x_0$ of the ODE. 
+
+Next, we take the limits:
+
+$$\lim_{x \to x_0} (x - x_0) \frac{Q(x)}{P(x)} = p_0$$
+
+$$\lim_{x \to x_0} (x - x_0)^2 \frac{R(x)}{P(x)} = q_0$$
+
+When these two limits exist and are finite, then this leads to the following. We divide $ P(x) y'' + Q(x) y' + R(x)y = 0$ by $P(x)$ and multiply it by $(x - x_0)^2$:
+
+$$(x-x_0)^2 y'' + (x - x_0) \underbrace{\left\{(x - x_0) \frac{Q(x)}{P(x)} \right\}}_{p(x) = p_0 + p_1 (x - x_0) + ...} y' + \underbrace{\left\{ (x - x_0)^2 \frac{R(x)}{P(x)} \right\}}_{q(x) = q_0 + q_1 (x - x_0) + ...} y = 0$$
+
+
+$$(x - x_0)^2 + p_0 (x - x_0) y' + q_0 y = 0$$
+
+is the C-E equation. This equation has a solution of the following format:
+
+$$y_0(x) = (x - x_0)^r$$
+
+To include the effect of the neglected terms, we modify the above solution:
+$$y(x) = \underbrace{(x - x_0)^r}_{\text{C-E solution}} \sum_{n = 0}^{\infty} \underbrace{a_n (x - x_0)^n}_{\text{The solution}}$$
+
+
+with $a_0 \neq 0$. (2) is the modified equation for $y_0(x) = (x - x_0)^r$ and is  Frobenius series. 
+
+\subsection{Solution procedure}
+
+\begin{enumerate}
+    \item Find values of r
+    \item Find the recursive relation for n
+    \item Find the radius of convergene for $\sum_{n = 0}^{\infty} a_n (x - x_0)^{n +r}$
+\end{enumerate}
+
+\subsection{Example 1}
+
+$$Ly = 2x^2 y'' - x y' + (1-x)y = 0$$
+
+Singular point here is when $x_0 = 0$
+
+Again, to test if it is a singular point, we take the limits. 
+
+$$p_0 = \lim_{x \to 0} \frac{-x}{2x^2} x = \frac{-1}{2}$$
+
+Similarly, we check $q_0$:
+
+$$q_0 = \lim_{x \to 0} \frac{(1-x)}{2x^2} x^2 = \frac{1}{2} = q_0$$
+
+Hence, the singular point is a RSP. 
+
+$$\Rightarrow y(x) = x^r \sum_{n = 0}^\infty a_n x^n$$
+
+Step 1: Find values of r
+
+Characteristic equation: $r(r-1) + p_0 r + q_0 = 0$
+
+This becomes $r(r-1) - \frac{r}{2} + \frac{1}{2} = 0 \Rightarrow r^2 - \frac{3}{2} r + \frac{1}{2} = 0$
+
+Hence, $r = 1$ and $r = \frac{1}{2}$ are roots of the indicial equation. 
+
+$$y_0 = c_1 x + c_2 x^{\frac{1}{2}}$$
+
+Now, we go to step 2: Find the recursive relation for $n$. 
+
+Take the first and second derivative of the summation (that we've used before) and sub into the equation. 
+
+$$2\sum_{n = 0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} - \sum_{n = 0}^{\infty} a_n (n+r) x^{n+r} + \sum_{n = 0}^\infty a_n x^{n+r} - \sum_{n = 0}^\infty a_n x^{n+r+1} = 0$$
+
+Changing index:
+
+$$2\sum_{n = 0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} - \sum_{n = 0}^{\infty} a_n (n+r) x^{n+r} + \sum_{n = 0}^\infty a_n x^{n+r} - \underbrace{\sum_{n = 0}^\infty a_n x^{n+r+1}}_{m = n+1} = 0$$
+
+All others are $m = n$. 
+
+With that, we get the following:
+
+$$2\sum_{n = 0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} - \sum_{n = 0}^{\infty} a_n (n+r) x^{n+r} + \sum_{n = 0}^\infty a_n x^{n+r} - \sum_{n = 1}^\infty a_{n-1} x^{n+r}$$
+(Removing $=0$ due to space)
+
+Peeling off the first terms ($n=0$), we end up with the following sum:
+
+$$\underbrace{2 a_n r(r-1)x^r - a_0 r x^r + a_0 x^r}_{ = a_0 x^r \left( 2r^2 - 3r + 1 \right)} \longrightarrow ...$$
+$$\hookrightarrow + \sum_{n = 1}^\infty \left[ 2 a_n (n+r) (n+r-1) - a_n (n+r) + a_{n-1} \right] x^{n+r} = 0$$
+
+Hence, $a_n = \frac{a_{n-1}}{(n+r)(2(n+r)-3) + 1}$ is the recursive relation for r values
+
+Finding the recursive relation for $r_1$ and $r_1$:
+
+$$r_1 \Rightarrow a_n = \frac{a_{n-1}}{(n+1)(2(n+1)-3)+1} = \frac{1_{n-1}}{2n^2 + n}$$
+
+$n = 1: a_1 = \frac{a_0}{3}; n = 2: a_2 = \frac{a_1}{10} = \frac{a_0}{30}; n = 3: a_3 = \frac{a_2}{21} = \frac{a_0}{630}$
+
+Therefore:
+
+$$y(x) = a_0 x^1 (1 + \frac{x}{3} + \frac{x^2}{30} + \frac{x^3}{630} + ...)$$
+
+Next, for $r_1 = \frac{1}{2}$:
+
+$$a_n  =\frac{a_{n-1}}{(n + \frac{1}{2} (2n+1-3) + 1} = \frac{a_{n-1}}{2(n + \frac{1}{2})(n-1) + 1}$$
+
+$n = 1: a_1 = \frac{a_0}{1}; n = 2:  a_2 = \frac{a_1}{6} = \frac{a_0}{6}; n = 3: a_3 = \frac{a_0}{90}$
+
+So, we have the following:
+
+$$y_2(x) = a_0 x^{\frac{1}{2}} \left[ 1 + x + \frac{x^2}{6} + \frac{x^3}{90} + ... \right]$$
+
+Now, onto step 3:
+
+Find the radius of convergence. 
+
+To find the radius of covergence, we use the ratio test:
+
+$$\lim_{n \to \infty} | \frac{a_n x^n}{a_{n-1}x^{n-1}}|$$
+
+$$ = \lim_{n \to \infty} | \frac{a_{n-1} x^n}{(n+r) (2(n+r)-3) + 1} \frac{1}{a_{n-1} x^{n-1}} |$$
+
+\textbf{The above is not correct. Why?}
+
+$$\lim_{n \to \infty} |x| |\frac{1}{(n+r) (2(n+r)-3)+1}| = 0$$
+
+$\Rightarrow p = \infty$ for all $x$ values
+
+Final solution:
+
+$$y(x) = y_1(x) + y_2(x)$$
+
+$$y(x) = C_1 x \left(1 + \frac{x}{3} + \frac{x^2}{30} + \frac{x^3}{630} + ... \right) + C_2 x^\frac{1}{2} \left(1+x+\frac{x^2}{6} + \frac{x^3}{90} + ... \right)$$
+
+
+\section{Bessel's equation}
+
+Applications: PDEs on circular / cylindrical domain. 
+
+e.g. heating and cooling in circular / cylindrical geometries, i.e. pipes and heat exchangers. 
+
+\hfill
+
+The equation format:
+\begin{equation}
+    \label{Bessel's Equation}
+    Ly = x^2 y'' + xy' + \left(x^2 - \nu^2 \right) y = 0
+\end{equation}
+
+$\nu$ is a constant and specifies the order of the equation. 
+
+$x_0 = 0$ is a regular singular point, since $\lim_{x \to 0} \frac{x}{x^2} (x) = 0 = p_0$ and $\lim_{x \to 0} \frac{x^2 - \nu^2}{x^2}(x^2) = - \nu^2 = q_0$
+
+\subsection{Step 1: Finding the $r$ values}
+
+The characteristic equation is:
+
+$$r(r-1) + p_0 r + q_0 = 0$$
+
+$$r(r-1) + r - \nu^2 = 0 \Rightarrow r = \pm \nu$$
+
+\subsection{Step 2: Frobenius part -- Finding recursive relation}
+
+$$y = \sum_{n = 0}^\infty a_n x^{n+r}$$
+
+$$y' = \sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1}$$
+
+$$y'' = \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2}$$
+
+Substituting into the equation, we get the following:
+
+$$Ly = x^2 y'' + xy' + \left(x^2 - \nu^2 \right) y = 0$$
+
+$$Ly = x^2 \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2} \rightarrow ...$$
+
+$$ \hookrightarrow + x\sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1} \rightarrow ...$$
+$$ \hookrightarrow + \left(x^2 - \nu^2 \right) \sum_{n = 0}^\infty a_n x^{n+r} = 0$$
+
+Shifting index:
+
+$$Ly = x^2 y'' + xy' + \left(x^2 - \nu^2 \right) y = 0$$
+
+$$Ly = x^2 \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2} \rightarrow ...$$
+
+$$ \hookrightarrow + x\sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1} \rightarrow ...$$
+$$ \hookrightarrow + \underbrace{x^2\sum_{n = 0}^\infty a_n x^{n+r+2}}_{m = n+2} - \nu^2\sum_{n = 0}^\infty a_n x^{n+r} = 0$$
+
+Hence, we get the following:
+
+$$Ly = \sum_{n = 0}^\infty a_n (n+r)(n+r-1) x^{n+r} + \sum_{n=0}^\infty a_n (n+r) x^{n+r} + \sum_{n = 2}^\infty a_{n-2} x^{n+r}$$
+
+Next, we peel off the first two terms to match the summation. 
+
+$$a_0 (r(r-1) + r - \nu^2) x^r + a_1 ((1+r) r + (1+r) - \nu^2) x^{r+1} \rightarrow ... $$
+$$ \hookrightarrow + \sum_{n = 2}^\infty a_n \left[ a_n \left( (n+r)^2 - \nu^2 \right) + a_{n-2} \right] x^{n+r} = 0$$
+
+$$a_0 x^r (r^2 - \nu^2) + a_1 x^{r+1} \left((r+1)^2 - \nu^2 \right)  + \sum_{n = 2}^\infty a_n \left[ a_n \left( (n+r)^2 - \nu^2 \right) + a_{n-2} \right] x^{n+r} = 0$$
