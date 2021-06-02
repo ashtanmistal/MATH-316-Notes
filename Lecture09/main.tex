@@ -1,4 +1,19 @@
-\graphicspath{{./Lecture9/}}
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\title{MATH 316 Lecture 9}
+\author{Ashtan Mistal}
+\date{May 26 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture09/}}
 
 \section{Recap}
 
@@ -94,7 +109,7 @@ The solution to P1:
 
 $$X(x) = X_n (x) = C_n \sin(\frac{n \pi x}{L})$$
 
-$$\lambda_n = \left( \frac{n \pi}{L}\right)^2, n \in N$$
+$$\lambda_n = \left( \frac{n \pi}{L}\right)^2, n \in \NN$$
 
 Therefore, there is a countably infinite set of $\lambda_n, X_n (x)$ as a solutiojn for the BVP. For each $\lambda_n$ we find an IVP separately:
 
@@ -106,7 +121,7 @@ is the solution to the IVP.
 
 \subsubsection{Summary}
 
-We found, for $n = 1,2,3,...$ ($n \in N$), we found:
+We found, for $n = 1,2,3,...$ ($n \in \NN$), we found:
 
 $$u_n (x,t) = X_n (x) T_n (t) = C_n \sin \left(\frac{n \pi x}{L} \right) e^{- \alpha \left( \frac{n \pi}{L} \right)^2 t}$$
 
@@ -177,7 +192,7 @@ where $\lambda$ is a constant.
 
 Step 2: Boundary conditions. 
 
-$$\begin{matrix} u(0,t) = 0 \longrightarrow X(0) = 0 \\ u(L,t) = 0 \longrightarrowX(L) = 0 \end{matrix}$$
+$$\begin{matrix} u(0,t) = 0 \longrightarrow X(0) = 0 \\ u(L,t) = 0 \longrightarrow X(L) = 0 \end{matrix}$$
 
 Step 3: Solve the eigenvalue problem for $X(x)$:
 
@@ -189,7 +204,7 @@ $$\lambda_n = \left( \frac{n \pi}{L} \right)^2$$
 
 $$X_n = \sin(\frac{n \pi}{L} x)$$
 
-where $n \in N$
+where $n \in \NN$
 
 Step 4: For each $\lambda_n$ find $T_n(t)$:
 
@@ -252,7 +267,7 @@ $\Rightarrow$ P2 problem. Cosine series.
 
 $$\lambda_n = \left(\frac{n \pi}{L} \right)^2$$
 
-and $$X_n(x) = \cos(\frac{n \pi x}{L})$$ for $n \in N$
+and $$X_n(x) = \cos(\frac{n \pi x}{L})$$ for $n \in \NN$
 
 and $\lambda_0 = 0; X_0 (x) = 1$
 
@@ -293,3 +308,5 @@ Step 7:
 Thus, the solution is 
 
 $$u(x,t) = \frac{a_0}{2} + \sum_{n = 1}^\infty a_n \cos \left(\frac{n \pi x}{L} \right) e^{- \alpha \left(\frac{n \pi}{L} \right)^2 t}$$
+
+\end{document}

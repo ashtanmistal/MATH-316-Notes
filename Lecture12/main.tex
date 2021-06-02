@@ -1,3 +1,25 @@
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Section \thesection}
+\lhead{MATH 316 Lecture 12}
+\rfoot{Page \thepage}
+
+
+\title{MATH 316 Lecture 12}
+\author{Ashtan Mistal}
+\date{June 1 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
 \graphicspath{{./Lecture12/}}
 
 \section{Wave Equations: Neumann Boundary Conditions}
@@ -177,3 +199,5 @@ $\Rightarrow$ d'Alembert's solution:
 $$y(x,t) = \frac{1}{2} \left[ f(x-at) + f(x+at) \right] + \frac{1}{2a} \int_{x-at}^{x+at} g(s) ds$$
 
 Both methods give similar solution. 
+
+\end{document}

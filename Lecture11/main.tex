@@ -1,3 +1,18 @@
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\title{MATH 316 Lecture 11}
+\author{Ashtan Mistal}
+\date{May 31 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
 \graphicspath{{./Lecture11/}}
 
 \section{Introduction}
@@ -66,7 +81,7 @@ N.B length of element is $\Delta x (1 + (\frac{\partial y}{\partial x})^2 )^{\fr
 
 \hfill
 
-\hline
+\hrule
 
 \hfill
 
@@ -129,7 +144,7 @@ $$\lambda = \lambda_n = \left( \frac{n \pi}{L} \right)^2$$
 
 and $$X_n (x) = \sin \left(\frac{n \pi x}{L} \right)$$
 
-where $n \in N$ (Natural numbers; 1,2,3,...)
+where $n \in \NN$ (Natural numbers; 1,2,3,...)
 
 IVP is:
 
@@ -169,7 +184,7 @@ $$g(x) = \sum_{n = 1}^\infty b_n \sin \left(\frac{ n \pi x}{L} \right) \Rightarr
 
 We know this series converges, so we match up the coefficients. 
 \begin{center}
-    $B_n = b_n \frac{L}{n \pi a}$ for $n \in N$. 
+    $B_n = b_n \frac{L}{n \pi a}$ for $n \in \NN$. 
 \end{center}
 
 
@@ -191,7 +206,7 @@ The solution for the eigenvalue problem is a P1 problem again.
 
 $$X_n(x) = \sin \left( \frac{n \pi x}{L} \right)$$
 \begin{center}
-    $\lambda_n = \left( \frac{n \pi}{L} \right)^2$ for $n \in N$
+    $\lambda_n = \left( \frac{n \pi}{L} \right)^2$ for $n \in \NN$
 \end{center}
 
 
@@ -262,9 +277,9 @@ $$y(x,t) = \sum_{n = 1}^\infty \frac{0.8}{(n \pi)^2 } \sin \left( \frac{n \pi}{2
 
 N.B\footnote{Nota bene. Used to denote an important point. }:
 
-$\sin (\frac{n \pi}{2}) = 1,0,-1,0,1,0,...$ for $n \in N$
+$\sin (\frac{n \pi}{2}) = 1,0,-1,0,1,0,...$ for $n \in \NN$
 
-Thus, we could write $n = 2k-1$ and $b_k' = (-1)^{k+1}$ for $k \in N$
+Thus, we could write $n = 2k-1$ and $b_k' = (-1)^{k+1}$ for $k \in \NN$
 
 $$y(x,t) = \sum_{k  =1}^\infty \frac{0.8 (-1)^{k + 1}}{(2k-1)^2 \pi^2} \sin \left( \frac{(2k-1) \pi}{2} x \right) \cos \left( \frac{(2k-1) \pi}{2} t \right)$$
 
@@ -292,3 +307,5 @@ $$y(x,t) = \frac{1}{5 \pi} \sin (5 \pi x) \sin(5 \pi t)$$
 
 
 \includepdf[pages=-]{Wave_Equations.pdf}
+
+\end{document}

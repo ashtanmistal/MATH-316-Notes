@@ -1,4 +1,20 @@
-\graphicspath{{./Lecture2/}}
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\title{MATH 316 Lecture 2}
+\author{Ashtan Mistal}
+\date{May 11 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture02/}}
+
 \section{Solving the problem from last class}
 
 We started with a simple example that was solvable using integrating factor, and we are now going to do the Taylor expansion of the \textbf{answer}, around the point $x = x_0$. THe confusion from last class was that we tried to solve the ODE using a Taylor expansion \textbf{of the differential equation}, as opposed to the actual answer. 
@@ -139,3 +155,5 @@ Singular points are divided into two classes:
     \item Regular singular points, that we use the Forbenius series solution for
     \item Irregular singular points (Beyond this course). For these, we \textbf{cannot} use Forbenius series. 
 \end{itemize}
+
+\end{document}
