@@ -2,8 +2,6 @@
 
 ## PDF Files
 
-All of the .pdf files are the separate lecture files, with the output of the latex document being imported into main.tex
+PDF files for each lecture will be uploaded to the corresponding folder. They are no longer imported into the main document.
 
-## Main Notes Document
-
-The main notes document, main.tex, includes the merged documents and is updated with each lecture after the lecture notes are complete. Unfortunately due to constraints the main .pdf file (Export of main.tex) will not be available until all lectures are finalized. 
+Instead, all of the .tex files are imported into the main document. 
