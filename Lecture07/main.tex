@@ -1,4 +1,19 @@
-\graphicspath{{./Lecture7/}}
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\title{MATH 316 Lecture 7}
+\author{Ashtan Mistal}
+\date{May 20 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture07/}}
 
 \section{Boundary value Problems}
 
@@ -114,7 +129,7 @@ Periodic boundary conditions: $y(0) = y(L)$
 
 \section{Fourier Series}
 
-Fourier series arise in 3 different situations of relevance to this course:1.Simple boundary value problems, e.g. P1-P32.Partial differential equations that describe heat flow, waves and diffusion (more later).3.Some initial value problems with less simple periodic forcing, e.g. we are very unlikely to have exactly: $f(t) = F_0 \cos(\omega t)$, in any real system, but might have a periodic forcing function. \\ \hline
+Fourier series arise in 3 different situations of relevance to this course:1.Simple boundary value problems, e.g. P1-P32.Partial differential equations that describe heat flow, waves and diffusion (more later).3.Some initial value problems with less simple periodic forcing, e.g. we are very unlikely to have exactly: $f(t) = F_0 \cos(\omega t)$, in any real system, but might have a periodic forcing function. \\ \hrule
 
 \hfill
 
@@ -206,3 +221,5 @@ Using integration by parts, with $u = t$ ($du = dt$) and $dv = \cos(\frac{n \pi 
 $$a_n = \frac{1}{L} \left[\frac{tL}{n \pi} \frac{\sin(n \pi t)}{L} \right|_{-L}^0 - \int_{-L}^{0} \frac{L}{n \pi} \frac{\sin(n \pi t}{L} dt$$
 
 $$ = \frac{1}{n \pi} \left[ \frac{L}{n \pi} \cos(\frac{n \pi t}{L} |_{-L}^{0} \right] = \frac{L}{n^2 \pi^2} \left(1 - \cos(n \pi \right)$$
+
+\end{document}

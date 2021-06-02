@@ -1,4 +1,20 @@
-\graphicspath{{./Lecture1/}}
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\title{MATH 316 Lecture 1}
+\author{Ashtan Mistal}
+\date{May 10 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture01/}}
+
 Some basic, quick notes regarding the course:
 
 \begin{itemize}
@@ -184,3 +200,5 @@ In order to do this, we write it as the sum described above:
 $$f(x) = \sum_{n = 0}^{\infty} \frac{f^{(n)} x(0)}{n!} (x - x_0)^n$$
 
 We can then let $y = \sum_{n = 0}^{\infty} \frac{f^{(n)} x(0)}{n!} x^n$ and $y' = \sum_{n = 1}^{\infty} \frac{f^{(n)} x(0)}{n!} n x^{n-1}$, and therefore we can write our ODE as $$\sum_{n = 1}^{\infty} \frac{f^{(n)} x(0)}{n!} x^{n-1} + (1 - 2x)\sum_{n = 0}^{\infty} \frac{f^{(n)} x(0)}{n!} x^n = 0$$
+
+\end{document}

@@ -1,15 +1,11 @@
-\documentclass{report}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{pdfpages}
-\usepackage{listings}
-\usepackage{fancyhdr}
-\usepackage{titling}
-\usepackage[margin=1.0in]{geometry}
+\documentclass[oneside]{book}
+\usepackage{preamble}
+\usepackage{pgffor}
+\usepackage{standalone}
 
-\DeclareMathOperator\erf{erf}
-\DeclareMathOperator\erfc{erfc}
+\makeatletter
+\let\twodigits\two@digits
+\makeatother
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -27,40 +23,12 @@
 
 \tableofcontents{}
 
-\chapter{Lecture 1}
-\input{Lecture1/main.tex}
-
-\chapter{Lecture 2}
-\input{Lecture2/main.tex}
-
-\chapter{Lecture 3}
-\input{Lecture3/main.tex}
-
-\chapter{Lecture 4}
-\input{Lecture4/main.tex}
-
-\chapter{Lecture 5}
-\input{Lecture5/main.tex}
-
-\chapter{Lecture 6}
-\input{Lecture6/main.tex}
-
-\chapter{Lecture 7}
-\input{Lecture7/main.tex}
-
-\chapter{Lecture 8}
-\input{Lecture8/main.tex}
-
-\chapter{Lecture 9}
-\input{Lecture9/main.tex}
-
-\chapter{Lecture 10}
-\input{Lecture10/main.tex}
-
-\chapter{Lecture 11}
-\input{Lecture11/main.tex}
-
-\chapter{Lecture 12}
-\input{Lecture12/main.tex}
+\foreach \i in {1, 2, ..., 99} {%
+\edef\FileName{Lecture\twodigits\i/main.tex}
+\IfFileExists{\FileName}{
+\chapter{Lecture \i}
+\input{\FileName}
+}
+}
 
 \end{document}

@@ -1,5 +1,20 @@
+\documentclass{article}
 
-\graphicspath{{./Lecture8/}}
+\usepackage{../preamble}
+\standalonetrue
+
+\title{MATH 316 Lecture 8}
+\author{Ashtan Mistal}
+\date{May 25 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture08/}}
+
 \section{Introduction}
 
 \begin{itemize}
@@ -47,7 +62,7 @@ $$b_n = \frac{1}{L} \int_{-L}^L f(t) \sin(\frac{n \pi t}{L}) dt$$
 
 $$f(t) = \begin{matrix} t & -L \leq t < 0 \\ 0 & 0 \leq t < L \end{matrix}, f(t + 2L) = f(t)$$
 
-$a_0 = \frac{-L}{2}$; $a_n = \frac{L}{n^2 \pi^2} \left(1 - \cos(n \pi ) \right) = \frac{L}{n^2 \pi^2} \left(1 - (-1)^n \right)$ for $n \in {N}$
+$a_0 = \frac{-L}{2}$; $a_n = \frac{L}{n^2 \pi^2} \left(1 - \cos(n \pi ) \right) = \frac{L}{n^2 \pi^2} \left(1 - (-1)^n \right)$ for $n \in \NN$
 
 \hfill
 
@@ -57,7 +72,7 @@ Using integration by parts, we get the following:
 
 $b_n = \left. \frac{L}{n \pi}\left( \cos(n \pi) - \underbrace{\frac{\sin(n \pi)}{n \pi}}_{ = 0} \right) \right.$
 
-$b_n = \frac{L}{n \pi} \cos(n \pi) = \frac{L}{n \pi} (-1)^n$ for $n \in N$
+$b_n = \frac{L}{n \pi} \cos(n \pi) = \frac{L}{n \pi} (-1)^n$ for $n \in \NN$
 
 Substitute $(a_0, a_n, b_n)$ into the equation: 
 
@@ -102,7 +117,7 @@ $$a_n = \frac{1}{L} \int_{-L}^L \underbrace{f(t)}_{odd} \underbrace{\cos(\frac{n
 
 $$b_n = \int_{-1}^1 f(t) \sin(n \pi t) dt = 2 \int_{0}^{1} (1) \sin(n \pi t) dt = \left. - \frac{2}{n \pi} \cos(n \pi t) \right|_{0}^{1}$$
 
-$$b_n = - \frac{2}{n \pi} \left( \cos(n \pi) - 1 \right) = \frac{4}{(2k - 1) \pi}, \text{with } n = 2k-1 \text{ for } k \in N$$
+$$b_n = - \frac{2}{n \pi} \left( \cos(n \pi) - 1 \right) = \frac{4}{(2k - 1) \pi}, \text{with } n = 2k-1 \text{ for } k \in \NN$$
 
 $$\Rightarrow f(t) = \sum_{k = 1}^\infty \frac{4}{(2k-1) \pi} \sin \left( (2k-1) \pi t \right) = \frac{4}{\pi} \sum_{k = 1}^\infty \frac{\sin \left( (2k-1) \pi t \right)}{2k-1}$$
 
@@ -139,3 +154,6 @@ $$f(t) = 1 - \frac{8}{\pi^2} \sum_{k = 1}^\infty \frac{\cos \left( \frac{(2k-1) 
 Included here for reference; also available on Canvas under Modules
 
 \includepdf[pages=-]{FourierSeries.pdf}
+
+\end{document}
+
