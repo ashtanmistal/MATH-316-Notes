@@ -1,0 +1,47 @@
+name: Compile PDF
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push events but only for the main branch
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Compiles the LaTeX document
+      - name: Compile
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+      
+      # Bump version and push tag
+      - name: Tag
+        uses: anothrNick/github-tag-action@1.26.0
+        id: bump_ver
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          RELEASE_BRANCHES: main
+          INITIAL_VERSION: 1.0.0
+      
+      # Renames main
+      - name: Rename
+        run: mv main.pdf MATH_316_Notes.pdf
+          
+      # Uploads the PDF to a release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ github.event.commits[0].message }}
+          files: MATH_316_Notes.pdf
+          tag_name: ${{ steps.bump_ver.outputs.new_tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
