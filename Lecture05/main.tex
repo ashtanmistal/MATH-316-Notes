@@ -31,25 +31,29 @@ $$\hookrightarrow \left\{ \begin{matrix} \nu = \pm \frac{1}{2} &  \& & q \neq 0 
 
 $$x^{n+r} | \left((n+r) (n+r-1) + (n+r) - \nu^2 \right) a_n + a_{n-2} = 0 \longrightarrow n \geq 2$$
 
-$$(**)\text{ } a_n = \frac{-a_{n-2}}{(n+r)^2 - \nu^2}$$
+\begin{equation}
+\label{Recursive Relation}
+     a_n = \frac{-a_{n-2}}{(n+r)^2 - \nu^2}
+\end{equation}
 
 Find the recursive relation for $r = \pm \nu$:
 
-$r_1 = \nu$: $a_n = \frac{-a_{n-2}}{(n+\nu)^2 - \nu^2} = \frac{-a_{n-2}}{n(n + 2 \nu)}$,  $(n \geq 2)$
+$$\quad r_1 = \nu \quad a_n = \frac{-a_{n-2}}{(n+\nu)^2 - \nu^2} = \frac{-a_{n-2}}{n(n + 2 \nu)} \quad n \geq 2)$$
 
-*writing down $a_2$, $a_3$, and $a_4$*
 
-\includegraphics[width = 0.8 \textwidth]{image2.png}
+$$\Rightarrow \quad a_2 = \frac{- a_0}{ 2^2 (1 + \nu}, \quad a_3 = \frac{- a_1}{3 (3 + 2 \nu)} = 0, \quad a_4 = \frac{a_0}{2(2^2)(2+\nu)(1 + \nu)}, \quad a_5 = 0$$
+
+%\includegraphics[width = 0.8 \textwidth]{image2.png}
 
 \hfill
 
-$\Rightarrow a_{2m} = \frac{(-)^m a_0}{m! 2^{2m} (1 + \nu) (2 + \nu) ... (m + \nu)}$
+$$\Rightarrow a_{2m} = \frac{(-)^m a_0}{m! 2^{2m} (1 + \nu) (2 + \nu) ... (m + \nu)}$$
 
 $$y_1(x) = a_0 x^{\nu} \sum_{m = 0}^\infty \frac{(-1)^m x^{2m}}{m! 2^{2m} (1 + \nu)(2 + \nu) ... (m + \nu)}$$
 
-Now, for $r_1 = \nu$:
+Now, for $r_1 = - \nu$:
 
-$$a_n = \frac{-1_{n-1}}{(n - \nu)^2 - \nu^2} = -\frac{a_{n-2}}{n(n - 2 \nu)}; n \geq 2$$
+$$a_n = \frac{-a_{n-1}}{(n - \nu)^2 - \nu^2} = -\frac{a_{n-2}}{n(n - 2 \nu)}; n \geq 2$$
 
 $$a_2 = \frac{-a_0}{2(2-2\nu)} = \frac{-a_0}{2(2)(1-\nu)}$$
 
@@ -85,12 +89,18 @@ How about $Y_\nu (x)$?
 Similar to Euler's equation (Refer to section 5.4 of the textbook), the second solution for repeated roots is:
 
 $$y_2 (x) = y_1(x) \ln(x) + x^{r_1} \sum_{n = 1}^\infty a_n ' (r_1) x^n$$
+\begin{center}
+    where $a_n ' (r_1) = \left. \frac{d a_1}{dr} \right|_{r = r_1}$
+\end{center}
 
-where $a_n ' (r_1) = \left. \frac{d a_1}{dr} \right|_{r = r_1}$
 
-According to this formula, $y_0 = J_0 (x) \ln(x) + x^{0} \sum_{n = 1}^\infty a_n' (0) x^n$ (***)
+According to this formula, 
+\begin{equation}
+\label{y naught for repeated roots}
+    y_0 = J_0 (x) \ln(x) + x^{0} \sum_{n = 1}^\infty a_n' (0) x^n
+\end{equation}
 
-The recursion for this case (**) is found to be 
+The recursion for this case (Equation \ref{Recursive Relation}) is found to be 
 
 $$a_{2m} (r) = - \frac{a_{2m-2}}{(r + 2m)^2}, m = 1,2,3,...$$
 
@@ -102,7 +112,7 @@ $$a_{2m}' (0) = -2 \left( \frac{1}{2} + \frac{1}{4} + .... + \frac{1}{2m} \right
 
 %\includegraphics[width = 0.8 \textwidth]{image3.png}
 
-If we substitute $a_{2m}'(0)$ to (***), we get $y_0 (x)$. Finally, $y(x) = C_1 J_0 (x) + C_2 Y_0 (x)$. 
+If we substitute $a_{2m}'(0)$ to Equation \ref{y naught for repeated roots}, we get $y_0 (x)$. Finally, $y(x) = C_1 J_0 (x) + C_2 Y_0 (x)$. 
 
 Graphing the solution:
 
@@ -126,9 +136,9 @@ $$x^{m+r} | -a_m (r^2 + 2r + 1 - \nu^2) = a_{m=2} \Rightarrow a_m = \frac{-a_{m-
 
 For $\nu \pm \frac{1}{2}, a_m = \frac{-a_{m-2}}{(m+\frac{1}{2})^2 - \frac{1}{4}} = \frac{-a_{m-2}}{m(m+1)}$
 
-Let $r_1 = \frac{1}{2}$: $a_1 (1 + 2 (\frac{1}{2})) = 0 \Rightarrow a_1 = 0$
-
-$a_2 = - \frac{a_0}{2(3)}$, $a_4 = \frac{-a_2}{3(4)} = \frac{a_0}{5!}$
+\begin{center}
+Let $r_1 = \frac{1}{2}$: $a_1 (1 + 2 (\frac{1}{2})) = 0 \Rightarrow a_1 = 0$. Hence, $a_2 = - \frac{a_0}{2(3)}$, $a_4 = \frac{-a_2}{3(4)} = \frac{a_0}{5!}$
+\end{center}
 
 Therefore:
 
@@ -139,9 +149,7 @@ $$y_1(x) = a_0 x^{- \frac{1}{2}} \sin(x)$$
 let $r_2 = \frac{-1}{2}$: $a_1 (1 - 2 \frac{1}{2}) = 0 \Rightarrow$ $a_1$ is arbitrary. it could be another solution.
 
 
-for this case, $a_m = \frac{-a_{m - 2}}{(m = \frac{1}{2})^2 - \frac{1}{4}} = \frac{-a_{m - 2}}{m(m-1)}$
-
-$a_2 = \frac{-a_0}{2(1)}$, $a_4 = \frac{-a_2}{4(3)} = \frac{a_0}{4!}$
+for this case, $a_m = \frac{-a_{m - 2}}{(m = \frac{1}{2})^2 - \frac{1}{4}} = \frac{-a_{m - 2}}{m(m-1)}$ and hence $a_2 = \frac{-a_0}{2(1)}$, $a_4 = \frac{-a_2}{4(3)} = \frac{a_0}{4!}$
 
 $$\Rightarrow y_x(x) = a_0 x^{\frac{-1}{2}} \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - ... \right) = a_0 x^{- \frac{1}{2}} \cos(x)$$
 
