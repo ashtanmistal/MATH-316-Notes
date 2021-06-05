@@ -25,7 +25,22 @@ $$y(x) = C \left[1 - x + \frac{3}{2} x^2 - \frac{7}{6} x^3 + ... \right]$$
 
 From the class notes:
 
-\includegraphics[width = 0.9 \textwidth]{image1.png}
+%\includegraphics[width = 0.9 \textwidth]{image1.png}
+
+Firstly, let:
+
+$$f(x) = \sum_{n = 0}^\infty \frac{f^{(n)} (x_0)}{n!} (x - x_0)^n$$
+
+Example: $y' + (1-2x) y = 0$. For this problem, we use the integrating factor $\mu(x) = e^{\int (1-2x) dx} = e^{x - x^2}$. This leads to the following:
+
+$$\left[ y e^{x - x^2} \right]' = 0 \to y e^{x - x^2} = 0 \to y = C e^{-x + x^2}$$
+
+Next, we Taylor expand $y(x)$ around the point $x_0 = 0$:
+
+$$y(x) = y(0) + \frac{y'(0)}{1} x + \frac{y''(0)}{2!} x^2 + ...$$
+
+$$y(x) = C \left[ 1-x+\frac{3}{2} x^2 - \frac{7}{6} x^3 + ... \right]$$
+
 
 Note that we factored C out of the taylor expansion. Moving forward, assume $y(x) = \sum_{n = 0}^{\infty} a_n x^n$. 
 
@@ -47,7 +62,11 @@ $$a_1 x^0 + a_0 x^0 + \sum_{m = 1}^{\infty} \left[a_{m+1} (m+1) + a_m - 2 a_{m-1
 
 Note that $x^0, x, x^2, ..., x^n$ are linearly independent. 
 
-\includegraphics[width = 0.7 \textwidth]{image2.png}
+%\includegraphics[width = 0.7 \textwidth]{image2.png}
+
+$$\begin{matrix} \left. x^0 \right] & a_1 + a_0 = 0 \to a_1 = - a_0 \\
+
+\left. \begin{matrix} x^m\\ m \geq 1 \end{matrix} \right] & a_{m+1} (m+1) + a_m - 2 a_{m-1} = 0 \end{matrix}$$
 
 Q: Why do we need to shift the indices?
 
@@ -82,11 +101,21 @@ $$\mu(x) = e^{\int \frac{1-x}{x} dx} = e^{2 \ln x - x} = x^2 e^{-x}$$
 
 $$\left[x^2 e^{-x} y \right]' = 0 \rightarrow y = \frac{C}{x^2 e^{-x}} = C x^-2 e^x$$
 
-\includegraphics[width = 0.9 \textwidth]{image3.png}
+%\includegraphics[width = 0.9 \textwidth]{image3.png}
+
+$$\quad y(x) = \sum_{n = 1}^\infty a_n x^n, \quad y' = \sum_{n=1}^\infty a_n n x^{n-1}$$
+
+$$xy' + 2y - xy = 0$$
 
 $$\sum_{n = 1}^{\infty} a_n n x^n + 2 \sum_{n = 0}^{\infty} a_n x^n - \sum_{n = 0}^{\infty} a_n x^n+1 = 0$$
 
-\includegraphics[width = 0.9 \textwidth]{image4.png}
+%\includegraphics[width = 0.9 \textwidth]{image4.png}
+
+$$\sum_{n=1}^\infty \underbrace{a_n n x^n}_{m=n} + 2 \sum_{n=0}^\infty \underbrace{a_n x^n}_{m=n} - \sum_{n=0}^\infty \underbrace{a_n x^{n+1}}_{m = n+1} = 0$$
+
+$$\sum_{m=1}^\infty a_m m x^m + \underbrace{2 \sum_{m=0}^\infty a_m x^m}_{\text{Peel off first term}} - \sum_{m=1}^\infty a_{m-1} x^m = 0$$
+
+$$2 a_0 x^0 + \sum_{m=1}^\infty \left(a_m m + 2 a_m - a_{m-1} \right) x^m = 0$$
 
 $$\left. x^0 \right] 2 a_0 = 0 \longrightarrow a_0 = 0$$
 

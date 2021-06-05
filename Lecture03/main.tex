@@ -57,7 +57,13 @@ Being analytic means that we need to be able to write the series.
 
 An example of a singular point:
 
-\includegraphics[width = 0.6 \textwidth]{image1.png}
+%\includegraphics[width = 0.6 \textwidth]{image1.png}
+
+$$xy'' + 2 \alpha y' = 0$$
+
+$$\left(\frac{2 \alpha}{\not x} \not x \right)$$
+
+
 
 Here, $x = 0$ is a singular point. (We re-wrote the first equation as the second equation, I believe)
 
@@ -177,11 +183,43 @@ $$6x^2(1+x) y'' + 5xy' - y = 0$$
 
 $$6x^2 y'' + 6x^3 y'' + 5xy' - y = 0$$
 
-\includegraphics[width = 0.95 \textwidth]{image4.png}
+%\includegraphics[width = 0.95 \textwidth]{image4.png}
 
-\includegraphics[width = 0.95 \textwidth]{image5.png}
+\begin{align*} = \underbrace{6 \sum_{n = 0}^\infty a_n (n+r) (n+r-1) x^{n+r}}_{n=m}  + \underbrace{6 \sum_{n=0}^\infty a_n (n+r)(n+r-1) x^{n+r+1}}_{n+1=m} + \underbrace{5 \sum_{n=0}^\infty a_n (n+r) x^{n+r}}_{n=m} - \underbrace{ \sum_{n=0}^\infty a_n x^{n+r}}_{n=m} = 0 \end{align*}
 
-\includegraphics[width = 0.95 \textwidth]{image6.png}
+%\includegraphics[width = 0.95 \textwidth]{image5.png}
+
+\begin{align*} 6 \sum_{m = 0}^\infty a_m (m+r) (m+r-1) x^{m+r} + 6 \sum_{m=1}^\infty a_{m-1} (m+r-1)(m+r-2) x^{m+r} + 5 \sum_{m=0}^\infty a_m (m+r) x^{m+r} - \sum_{m=0}^\infty a_m x^{m+r}    \end{align*} %!!!!
+
+%\includegraphics[width = 0.95 \textwidth]{image6.png}
+
+Peeling off terms, we get the following:
+\begin{align*}
+    6 a_0 r(r-1) x^r + 5 a_0 r x^r - a_0 x^r \rightarrow\\
+    \hookrightarrow + \sum_{m=1}^\infty \left[ 6 a_m (m+r) (m+r-1) + 6 a_{m-1} (m+r-1) (m+r-2) + 5 a_m (m+r) - a_m \right] x^{m+r} = 0
+\end{align*}
+
+
+From this, we can break this up into $x^r$ terms and $x^{m+r}$ terms:
+
+$$\begin{matrix} \left. x^r \right] & \underbrace{a_0 \left[ 6r(r-1) + 5r - 1 \right]}_{\text{Cauchy-Euler Eqn}} = 0 \to r_{1,2} = \frac{1}{2}, \frac{1}{3} \\
+\left. \begin{matrix} x^{m+r} \\ m \geq 1 \end{matrix} \right] & a_m \left[ 6 (m+r)(m+r-1) + 5 (m+r) - 1 \right] & = -6 a_{m-1} (m+r-1) (m+r-2) \end{matrix}$$
+
+Solving for $a_m$:
+
+$$a_m = \frac{-6 a_{m-1} (m+r-1)(m+r-2)}{(m+r) \left[6m+6r-6+5 \right] - 1}$$
+
+Hence we build the recursion for $r_1$ and $r_2$:
+
+$$\quad r = - \frac{1}{3}, \quad m \geq 1$$
+
+$$a_m = \frac{-6 a_{m-1} \left( m - \frac{4}{3} \right) \left( m - \frac{7}{3} \right)}{\left(m - \frac{1}{3} \right) \left( 6m-3 \right) - 1}$$
+
+$$\quad m = 1: \quad a_1 = \frac{6 a_0 \left(- \frac{1}{3} \right) \left( - \frac{4}{3} \right)}{\left( \frac{2}{3} \right) (3) - 1}  = \frac{-8 a_0}{3}$$
+
+$$\quad m = 2: \quad a_2 = \frac{-32 a_0}{42(3)}$$
+
+Hence, we can build the following solution:
 
 $$y_1(x) = a_0 x^{\frac{-1}{3}} \left[ 1- \frac{8}{3} x - \frac{32}{3(42)} x^2 + ... \right]$$
 
@@ -207,6 +245,8 @@ $$ |x| \lim_{m \to \infty} | \frac{a_{m=1}}{a_m}, a_m = \frac{-6 a_{m-1} (m+r-1)
 
 $$ |x| \lim_{m \to \infty}  \frac{-6 a_{m-1} (m+r-1) (m+r-2)}{(m+r) (6m + 6r - 1) - 1} = |x| \cdot 1$$
 
-\includegraphics[width = 0.95 \textwidth]{image7.png}
+%\includegraphics[width = 0.95 \textwidth]{image7.png}
+
+Given that $|x| < 1$, we have $-1 < x < 1$. $P$ is at least equal to the distance between $x_0 = 0$ and the nearest singular point, $p =1$. The singular points for this series is $x_{\text{singular}} = 0, -1$. 
 
 \end{document}
