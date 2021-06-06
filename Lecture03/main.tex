@@ -35,7 +35,7 @@ The Cauchy-Euler equation is
 
 We know that $y = (x - x_0)^r$ (As an example). 
 
-How do we make $P(x) y'' + Q(x) y' + R(x) y = 0$ look like( \ref{Cauchy-Euler})?
+How do we make $P(x) y'' + Q(x) y' + R(x) y = 0$ look like (\ref{Cauchy-Euler})?
 
 If we multiply with $(x - x_0)^2$ and divide by $P(x)$, we may get something similar to the Cauchy-Euler. 
 
@@ -81,7 +81,7 @@ $$\underbrace{y(x) = (x - x_0)^r}_{*} \underbrace{\sum_{n = 0}^{\infty} a_n (x -
 
 \subsection{Example}
 
-$$x(1+x^2) y'' + 2xy' + (1+x^2) y = 0$$. 
+$$x(1+x^2) y'' + 2xy' + (1+x^2) y = 0$$
 
 Classify singular points. Here, $p(x) = x(1+x)^2$, $Q(x) = 2x$, and $R(x) = 1+x^2$. Singular points: $\left\{ \begin{matrix} x = 0 \\ x = \pm i \end{matrix} \right.$ We need $p(x_0) = 0$ (Take a look at the left hand side if you don't understand!). 
 
@@ -97,7 +97,7 @@ $\lim_{x \to 0} \frac{1+x^2}{x(1+x^2)} x^2 = 0 = q_0$
 
 Now for $x_0 = i$:
 
-$\lim_{x \to i} \frac{2x}{x (1+x^2)} (x - i) = \lim_{x \to i} \frac{2(x-i}{(x-i)(x+i)} = \frac{1}{i} = p_0$
+$\lim_{x \to i} \frac{2x}{x (1+x^2)} (x - i) = \lim_{x \to i} \frac{2(x-i)}{(x-i)(x+i)} = \frac{1}{i} = p_0$
 
 $\lim_{x \to i} \frac{1+x^2}{x(1+x^2)} (x-i)^2 = 0 = q_0$
 
@@ -105,11 +105,12 @@ We see that because both $p_0$ and $q_0$ are finite, $x = i$ is also a regular s
 
 Try for $x = -i$:
 
+\begin{center}
 $\lim_{x \to -i} \frac{2x}{x (1+x^2)} (x+i)$
 
 $\lim_{x \to -i} \frac{1+x^2}{x(1+x^2)} (x+i)^2$
+\end{center}
 
-yeah uhhhh.... review how to calculate limits. 
 
 When we calculate $x_0 = -i$, we get: $p_0 = -\frac{1}{i}$, and $q_0 = 0$. Hence, $x_0 = -i$ is also a regular singular point. 
 

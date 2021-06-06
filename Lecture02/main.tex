@@ -17,7 +17,7 @@
 
 \section{Solving the problem from last class}
 
-We started with a simple example that was solvable using integrating factor, and we are now going to do the Taylor expansion of the \textbf{answer}, around the point $x = x_0$. THe confusion from last class was that we tried to solve the ODE using a Taylor expansion \textbf{of the differential equation}, as opposed to the actual answer. 
+We started with a simple example that was solvable using integrating factor, and we are now going to do the Taylor expansion of the \textbf{answer}, around the point $x = x_0$. The confusion from last class was that we tried to solve the ODE using a Taylor expansion \textbf{of the differential equation}, as opposed to the actual answer. 
 
 $$y(x) = y(0) + \frac{y'(0)}{1} x + \frac{y''(0)}{2!} x^2 + ...$$
 
@@ -50,9 +50,7 @@ $$y' + y - 2xy = 0$$
 
 $$\text{letting } y = \sum_{n = 0}^{\infty} a_n x^n, \text{ and } y' = \sum_{n = 1}^{\infty} a_n n x^{n-1}$$
 
-$$\sum_{n = 1}^{\infty} a_n \underbrace{n}_{m = n-1; n = 1, m = 0} x^{n-1} + \sum_{n = 0}^{\infty} \underbrace{a_n}_{m = n} x^n - 2 \sum_{n = 0}^{\infty} \underbrace{a_n}_{m = n+1;  n = 0, m = 1} x^{n+1} = 0$$
-
-Not exactly sure what these variables are doing with the $n$ and $m$... I guess they're dummy variables that we're using for each sum. 
+$$\sum_{n = 1}^{\infty} a_n \underbrace{n}_{m = n-1} x^{n-1} + \sum_{n = 0}^{\infty} \underbrace{a_n}_{m = n} x^n - 2 \sum_{n = 0}^{\infty} \underbrace{a_n}_{m = n+1} x^{n+1} = 0$$
 
 $$ \sum_{m = 0}^{\infty} a_{m+1} (m+1)x^m + \sum_{m = 0}^{\infty} a_m x^m - 2 \sum_{m = 1}^{\infty} a_{m-1} x^m = 0$$
 
@@ -65,7 +63,6 @@ Note that $x^0, x, x^2, ..., x^n$ are linearly independent.
 %\includegraphics[width = 0.7 \textwidth]{image2.png}
 
 $$\begin{matrix} \left. x^0 \right] & a_1 + a_0 = 0 \to a_1 = - a_0 \\
-
 \left. \begin{matrix} x^m\\ m \geq 1 \end{matrix} \right] & a_{m+1} (m+1) + a_m - 2 a_{m-1} = 0 \end{matrix}$$
 
 Q: Why do we need to shift the indices?
@@ -117,9 +114,8 @@ $$\sum_{m=1}^\infty a_m m x^m + \underbrace{2 \sum_{m=0}^\infty a_m x^m}_{\text{
 
 $$2 a_0 x^0 + \sum_{m=1}^\infty \left(a_m m + 2 a_m - a_{m-1} \right) x^m = 0$$
 
-$$\left. x^0 \right] 2 a_0 = 0 \longrightarrow a_0 = 0$$
-
-$$ \left. \begin{matrix} x^m \\ m \geq 1 \end{matrix} \right] a_m (m+2) = a_{m-1}$$
+$$\begin{matrix} \left. x^0 \right] & 2 a_0 = 0 \longrightarrow a_0 = 0 \\
+\left. \begin{matrix} x^m \\ m \geq 1 \end{matrix} \right] & a_m (m+2) = a_{m-1} \end{matrix}$$
 
 $$\text{note that } a_m = \frac{a_{m-1}}{m+2} \text{for m} \geq 1$$
 
@@ -133,7 +129,7 @@ $y = c x^{-2} e^x$ is the general solution.
 
 $$ = C \underbrace{x^{-2}}_{\text{Capture the singularity}} \underbrace{\left[ 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ... \right]}_{\sum_{n = 0}^{\infty} a_n x^n}$$
 
-$$ y(x) = \underbrace{x^r}_{\text{Capture singularity}} \sum_{n = 0}^{\infty} a_n x^n$$
+$$ y(x) = x^r \sum_{n = 0}^{\infty} a_n x^n$$
 
 This brings us to the \textbf{Frobenius Series}. 
 
@@ -147,7 +143,7 @@ $$P(x) y'' + Q(x) y' + r(x) y = 0$$
 
 $$y'' + \frac{Q(x)}{P(x)} y' + \frac{R(x)}{P(x)} y = 0$$
 
-Letting $p(x) = \frac{Q(x)}{P(x)}$ and $q(x) = \frac{R(x)}{P(x)}$. If they are both \textbf{analytic} at the point $x_0$. i.e. they have Taylor expansions about $x_0$, $x_0$ is an ordinary point. Otherwise, $x_0$ is a singular point. 
+Letting $p(x) = \frac{Q(x)}{P(x)}$ and $q(x) = \frac{R(x)}{P(x)}$. If they are both \textbf{analytic} at the point $x_0$, i.e. they have Taylor expansions about $x_0$, $x_0$ is an ordinary point. Otherwise, $x_0$ is a singular point. 
 
 Example: $\left. \begin{matrix} p(x) = \frac{1}{x} \\ p(x) = \ln(x) \end{matrix} \right\} \text{At } x = 0 \text{, not analytic}$.
 

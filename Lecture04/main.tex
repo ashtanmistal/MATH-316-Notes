@@ -134,13 +134,11 @@ All others are $m = n$.
 
 With that, we get the following:
 
-$$2\sum_{n = 0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} - \sum_{n = 0}^{\infty} a_n (n+r) x^{n+r} + \sum_{n = 0}^\infty a_n x^{n+r} - \sum_{n = 1}^\infty a_{n-1} x^{n+r}$$
-(Removing $=0$ due to space)
+$$2\sum_{n = 0}^{\infty} a_n (n+r)(n+r-1) x^{n+r} - \sum_{n = 0}^{\infty} a_n (n+r) x^{n+r} + \sum_{n = 0}^\infty a_n x^{n+r} - \sum_{n = 1}^\infty a_{n-1} x^{n+r} = 0$$
 
 Peeling off the first terms ($n=0$), we end up with the following sum:
 
-$$\underbrace{2 a_n r(r-1)x^r - a_0 r x^r + a_0 x^r}_{ = a_0 x^r \left( 2r^2 - 3r + 1 \right)} \longrightarrow ...$$
-$$\hookrightarrow + \sum_{n = 1}^\infty \left[ 2 a_n (n+r) (n+r-1) - a_n (n+r) + a_{n-1} \right] x^{n+r} = 0$$
+$$\underbrace{2 a_n r(r-1)x^r - a_0 r x^r + a_0 x^r}_{ = a_0 x^r \left( 2r^2 - 3r + 1 \right)} + \sum_{n = 1}^\infty \left[ 2 a_n (n+r) (n+r-1) - a_n (n+r) + a_{n-1} \right] x^{n+r} = 0$$
 
 Hence, $a_n = \frac{a_{n-1}}{(n+r)(2(n+r)-3) + 1}$ is the recursive relation for r values
 
@@ -176,7 +174,7 @@ $$ = \lim_{n \to \infty} | \frac{a_{n-1} x^n}{(n+r) (2(n+r)-3) + 1} \frac{1}{a_{
 
 \textbf{The above is not correct. Why?}
 
-$$\lim_{n \to \infty} |x| |\frac{1}{(n+r) (2(n+r)-3)+1}| = 0$$
+$$\lim_{n \to \infty} |x| \cdot |\frac{1}{(n+r) (2(n+r)-3)+1}| = 0$$
 
 $\Rightarrow p = \infty$ for all $x$ values
 
@@ -225,19 +223,13 @@ Substituting into the equation, we get the following:
 
 $$Ly = x^2 y'' + xy' + \left(x^2 - \nu^2 \right) y = 0$$
 
-$$Ly = x^2 \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2} \rightarrow ...$$
-
-$$ \hookrightarrow + x\sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1} \rightarrow ...$$
-$$ \hookrightarrow + \left(x^2 - \nu^2 \right) \sum_{n = 0}^\infty a_n x^{n+r} = 0$$
+$$Ly = x^2 \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2} + x\sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1} + \left(x^2 - \nu^2 \right) \sum_{n = 0}^\infty a_n x^{n+r} = 0$$
 
 Shifting index:
 
 $$Ly = x^2 y'' + xy' + \left(x^2 - \nu^2 \right) y = 0$$
 
-$$Ly = x^2 \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2} \rightarrow ...$$
-
-$$ \hookrightarrow + x\sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1} \rightarrow ...$$
-$$ \hookrightarrow + \underbrace{x^2\sum_{n = 0}^\infty a_n x^{n+r+2}}_{m = n+2} - \nu^2\sum_{n = 0}^\infty a_n x^{n+r} = 0$$
+$$Ly = x^2 \sum_{n=0}^{\infty} a_n (n+r) (n+r-1) x^{n+r-2} + x\sum_{n =0}^{\infty} a_n (n+r)x^{n+r-1} + \underbrace{x^2\sum_{n = 0}^\infty a_n x^{n+r+2}}_{m = n+2} - \nu^2\sum_{n = 0}^\infty a_n x^{n+r} = 0$$
 
 Hence, we get the following:
 
@@ -245,8 +237,7 @@ $$Ly = \sum_{n = 0}^\infty a_n (n+r)(n+r-1) x^{n+r} + \sum_{n=0}^\infty a_n (n+r
 
 Next, we peel off the first two terms to match the summation. 
 
-$$a_0 (r(r-1) + r - \nu^2) x^r + a_1 ((1+r) r + (1+r) - \nu^2) x^{r+1} \rightarrow ... $$
-$$ \hookrightarrow + \sum_{n = 2}^\infty a_n \left[ a_n \left( (n+r)^2 - \nu^2 \right) + a_{n-2} \right] x^{n+r} = 0$$
+$$a_0 (r(r-1) + r - \nu^2) x^r + a_1 ((1+r) r + (1+r) - \nu^2) x^{r+1} + \sum_{n = 2}^\infty a_n \left[ a_n \left( (n+r)^2 - \nu^2 \right) + a_{n-2} \right] x^{n+r} = 0$$
 
 $$a_0 x^r (r^2 - \nu^2) + a_1 x^{r+1} \left((r+1)^2 - \nu^2 \right)  + \sum_{n = 2}^\infty a_n \left[ a_n \left( (n+r)^2 - \nu^2 \right) + a_{n-2} \right] x^{n+r} = 0$$
 
