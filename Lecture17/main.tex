@@ -1,0 +1,203 @@
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Section \thesection}
+\lhead{MATH 316 Lecture 17}
+\rfoot{Page \thepage}
+
+
+\title{MATH 316 Lecture 17}
+\author{Ashtan Mistal}
+\date{June 14, 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture17/}}
+
+Last week, we finished the topic of solving PDEs, and did some examples on Laplace's equation in polar coordinates / cylindrical coordinates. 
+
+In solving these, we have seen Sturm - Liouville theory. 
+
+\section{Sturm - Liouville Theory}
+
+We have solved one type of BVP before as $X'' + \lambda X = 0$ with these boundary conditions: $X(0) = 0 = X(L)$ (Dirichlet), $X'(0) = X'(L)$ (Neumann), $X'(0) = 0 = X(L)$ (Mixed), $X(0) = 0 = X'(L)$ (Mixed). 
+
+\hfill
+
+Other types of boundary conditions include, for example, Robin boundary condition: $h X(0) - X'(0) = 0$ or $h X(L) - X'(L) = 0$. We find these boundary value problems in heat transfer problems. Note that $h$ is a constant. $h X(L)$ usually emphasizes heat convection, and $X'(L)$ represents heat conduction. 
+
+These can be found, as stated before, in heat transfer problems. The heat flux is related to the temperature difference with a surrounding ambient. This is called Newton's law of Cooling. Note that:
+
+$$X'' + \lambda X = 0, \quad X(0) + X(L) = 0$$
+
+$$LX = \lambda X$$
+
+$$L = - \frac{\ud^2}{\ud x^2}$$
+
+For notation-related purposes, let $\mathcal{L} = L$. 
+
+These examples are special cases for a general second order variable coefficient equation called Sturm - Liouville boundary value problems. 
+
+$$\mathcal{L} y = - \left[ p(x) y' \right]' + q(x) y = \lambda r(x) y, \quad a < x < b$$
+
+Note that $b - a = \ell$. 
+
+BCs: 
+
+$$\left\{ \begin{matrix} \alpha_1 y(a) + \alpha_2 y'(a) & = 0 \\ \beta_1 y(b) + \beta_2 y'(b) & = 0 \end{matrix} \right.$$
+
+\hfill
+
+Sturm - Liouville BVPs include:
+
+\begin{itemize}
+    \item More general eigenvalue problems (more general second order differential equations)
+    \item More general two-point BCs
+    \item More general geometrical domain
+\end{itemize}
+
+The S-L problem is regular (non-singular) if for $\mathcal{L} y = - \left[ p(x) y' \right]' + q(x) y = \lambda r(x) y, \quad a < x < b$, we have $p(x) > 0, \quad r(x) > 0, \quad \ell < \infty$ for $0 < x < \ell$
+
+The S-L is singular if: $p(x) = 0$ or $r(x) = 0$ or $\ell = \infty$ for $0 < x < \ell$
+
+Special cases:
+
+\begin{itemize}
+    \item If $p(x) = 0, q(x) = 0, r(x) = 1$: $\Rightarrow y'' + \lambda y = 0$ similar to P1 and P2 problems that we have seen before. 
+    \item If $\alpha_1 = 1, \alpha_2 = 0, \beta_1 = 1, \beta_2 = 0$ we have Dirichlet boundary conditions $y(a) = y(b) = 0$. 
+\end{itemize}
+
+However, the periodic boundary condition (i.e. $y(-\ell) = y(\ell)$ are not separated and so will not form a S-L eigenvalue problem. 
+
+Any second order differential operator can be reduced to this self-adjoint problem. How?
+
+\section{Converting to Sturm - Liouville (S-L) Format}
+
+Consider $$-a (x) \frac{\ud^2 y}{\ud x^2} - b(x) \frac{\ud y}{\ud x} + c(d) y = \lambda y$$
+
+First step: multiply equation by a factor of $\mu$ (an integrating factor):
+\begin{equation}
+\label{**}
+    - \mu a y'' - b \mu y' + c \mu y - \lambda \mu y = 0
+\end{equation}
+
+Second step: Compare terms with S-L format:
+
+$$-p y'' - p' y' + qy - \lambda r y = 0$$
+
+$y''$ coefficients: $\mu a = p \to \mu' a + \mu a' = p'$
+
+$y'$ coefficients: $b \mu = p'$
+
+So, $b \mu = \mu' a + \mu a'$. Therefore $\mu' a = (b -a') \mu$
+
+Therefore $\frac{\mu'}{\mu} = \frac{b-a'}{a}$. This we integrate:
+
+$$\mu = \frac{C'}{a} e^{\int_0^x \frac{b(s)}{a(s)} \ud s}$$
+
+(Note that $e^{- \int^x \frac{a'(s)}{a(s)} \ud s} = \frac{1}{a(x)}$)
+
+Take $C' = 1$:
+
+$$\mu = \frac{1}{a(x)} e^{\int^x \frac{b(s)}{a(s)} \ud s}$$
+
+Step 3: Substitute this equation into equation \ref{**} and we will find the S-L format. 
+
+
+$$\underbrace{\frac{d}{ds} \left( e^{\int^x \frac{b(s)}{a(s)} ds} \frac{dy}{dx} \right)}_{p(x)} - \underbrace{\left( \frac{C(x)}{a(x)} e^{\int^x \frac{b(s)}{a(s)} ds} \right) y}_{q(x)} = \underbrace{- \lambda \frac{e^{\int^\lambda \frac{b(s)}{a(s)} ds}}{a(x)} y}_{r(x)}$$
+
+\section{Example 23}
+
+$$\mathcal{L} y = x^2 y'' + xy' + \lambda y = 0$$
+
+Write this in S-L format. 
+
+$$a(x) =  x^2, \quad b(x) = x, \quad c(x) = 0$$
+
+Now, multiply the equation by the integrating factor $\mu(x)$, where $\mu(x) = \frac{e^{\int^x \frac{s}{s^2} ds}}{x^2} = \frac{e^{\int^x \frac{ds}{s}}}{x^2} = \frac{e^{\ln x}}{x^2} =  \frac{1}{x}$
+
+Therefore:
+
+$$x y'' + y' + \frac{\lambda}{x} y = 0$$
+
+We can combine $x y'' + y'$ to be $(x y')'$:
+
+$$(x y')' + \frac{\lambda}{x} y = 0$$
+
+which is in S-L format. 
+
+$$- (x y')' = \frac{\lambda}{x} y$$
+
+where $a(x) = x, \quad b(x) = 0, \quad r(x) = \frac{1}{x}$
+
+\section{Properties of Sturm - Liouville Problems}
+
+$$\mathcal{L} y = - (p(x) y')' + q(x) y = \lambda r(x) y, \quad 0 < x < \ell$$
+
+\begin{itemize}
+    \item An infinite sequence of eigenvalues $\lambda_j$ (e.g. $\frac{n \pi}{L}$) and corresponding eigenfunctions $\phi_j$ exist (e.g. $\sin \left( \frac{n \pi}{L} \right)$. 
+    \item $\lambda_1 < \lambda_2 < ... < \lambda_k < ... < \infty$
+    \item $\lambda_n \to \infty$ as $n \to \infty$
+    \item Eigenvalues $\lambda_j$ are all real and distinct
+    \item The eigenfunctions corresponding to two distinct eigenvalues are orthogonal with respect to the weight function $r(x)$:
+    
+    $$\int_0^\ell r(x) \phi_i(x) \phi_j (x) dx = 0, \quad i \neq j$$
+    
+    \item If $\phi_i(x)$ is normalized, we have:
+    
+    $$\int_0^\ell r(x) \phi_i^2 (x) dx = 1$$
+    
+    \item The eigenfunctions $\phi_i (x)$ form a complete set. This means that any piecewise smooth\footnote{Continuous and derivative defined at all points. } function $f(x)$ (that satisfies the boundary conditions) can be expressed by a generalized Fourier series of the eigenfunctions. 
+    
+\end{itemize}
+
+Eigenfunctions can be written as:
+
+$$f(x) = \sum_{n=1}^\infty c_n \phi_n (x)$$
+
+where
+
+$$c_n = \frac{\int_0^\ell r(x) f(x) \phi_n (x) dx}{\int_0^\ell r(x) \phi_n^2 (x) dx}$$
+ 
+ proof: 
+ 
+ $$f(x) = \sum_{n=1}^\infty c_n \phi_n (x) \underbrace{\longrightarrow}_{\text{Substitute}} \int_0^\ell f(x) r(x) \phi_m (x) dx$$
+ 
+ $$ = \sum_{n=1}^\infty \int_0^\ell c_n r(x) \phi_n(x) \phi_m(x) dx = c_m \int_0^\ell r(x) \phi_m^2(x) dx \text{ (Orthogonality)}$$
+ 
+\section{Example 24}
+
+Find eigenvalues and eigenfunctions for:
+
+$$\frac{d}{dx} \left( e^x y' \right) + \lambda e^x y = 0, \quad y(0) = 0 = y(1)$$
+
+Here, we have a \textbf{regular} S-L problem. So, all eigenvalues $\lambda > 0$. 
+
+If we differentiate and expand divide by exponential we get:
+
+$$y'' + y' + \lambda y = 0 \Rightarrow r^r + r + \lambda = 0 \Rightarrow r = - \frac{1}{2} \pm \sqrt{ \frac{1}{4} - \lambda}$$
+
+
+If we assume $\lambda > \frac{1}{4}$ then $r = - \frac{1}{2} \pm i \sqrt{\lambda - \frac{1}{4}} \Rightarrow y(x) = \left[ A \cos( \sqrt{\lambda - 1/4}) + B \sin(\sqrt{\lambda - 1/4} x) \right] e^{- \frac{x}{2}}$
+
+$$y(0) = 0 \Rightarrow A = 0$$
+
+$$y(1) = 0 \Rightarrow \sqrt{\lambda - \frac{1}{4}} = n \pi \therefore \lambda = \frac{1}{4} + (n \pi)^2, \quad n \in \NN$$
+
+Therefore $y_n(x) = \sin (n \pi x) e^{- \frac{x}{2}}$
+
+Let's check the orthogonality:
+
+$r(x) = e^x$, $y_k = e^{- \frac{x}{2}} \sin (k \pi x)$, $y_n (x) =  e^{- \frac{x}{2}} \sin (n \pi x)$
+
+$$\int_0^1 r(x) y_k(x) y_n(x) = \int_0^1 e^x \left( e^{- \frac{x}{2}} \sin(k \pi x) \right) \left( e^{- \frac{x}{2}} \sin(n \pi x) \right) dx = \int_0^1 \sin(k \pi x) \sin(n \pi x) dx = 0, \quad k \neq n$$
+
+\end{document}
