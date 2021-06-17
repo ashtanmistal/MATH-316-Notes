@@ -225,6 +225,89 @@ $$\int_1^{e^\pi} \frac{1}{r} f(r) \cos(m \ln r) dr = A_0 \pi \int_1^{e^\pi} \fra
     \includegraphics[width = 0.9 \textwidth]{11.png}
 \end{center}
 
+\section{Office Hours}
+
+General Notes:
+
+\begin{itemize}
+    \item if we have Dirichlet boundary condition we do an odd extension, Neumann then even. 
+\end{itemize}
+
+\subsection{Final 2014}
+
+Wave equation:
+
+$$u_{tt} = u_{xx} - \gamma u, \quad 0 < x < 1, \quad t > 0$$
+BC:
+$$u(0,t) = u(1,t) = 0$$
+
+IC:
+
+$$u(x,0) = 0, \quad u_t(x,0) = g(x)$$
+
+For part (a), we do the following:
+
+$$u(x,t) = X(x) T(t) \rightarrow \frac{\ddot{T}}{T} + \gamma = \frac{X''}{X} = - \lambda$$
+
+BVP:
+
+$$X'' + \lambda X = 0$$
+
+$$X(0) = 0 = X(1)$$
+
+This is a P1 problem. 
+
+Hence, $\lambda_n = \left( \frac{n \pi}{1} \right)^2$ and $X_n = \sin(n \pi x)$ for $n \in \NN$. 
+
+\hfill
+
+IVP:
+
+
+$$\frac{\ddot{T}_n}{T_n} + \gamma = -(n \pi)^2 \Rightarrow \ddot{T}_n + \underbrace{(\gamma + (n \pi)^2 )}_{\mu_n^2} T_n = 0$$
+
+$$T_n(t) = A_n \cos(\mu_n t) + B_n \sin(\mu_n t)$$
+
+Substituting in the initial conditions:
+
+$$u(x,0) = 0 \Rightarrow A_n = 0$$
+
+$$\Rightarrow T_n = B_n \sin(\mu_n t)$$
+
+$$u(x,t) = \sum_{n=1}^\infty B_n \sin(n \pi x) \sin(\mu_n t)$$
+
+To find $B_n$, we use the second IC:
+
+$$u_t(x,0) = g(x) = \sum_{n=1}^\infty B_n \mu_n \sin(n \pi x)$$
+
+$$\Rightarrow B_n \mu_n = \frac{2}{1} \int_0^1 g(x) \sin(n \pi x) dx \rightarrow B_n = \frac{2}{\sqrt{\gamma + (n \pi)^2}} \int_0^1 g(x) \sin(n \pi x) dx$$
+
+b) $\gamma = 7 \pi^2$ and $g(x) = \sin(3 \pi x)$
+
+$$\sin(3 \pi x) = \sum_{n=1}^\infty B_n \mu_n \sin(n \pi x)$$
+
+$n = 3$ and $B_3 \mu_3 = 1$ and $\mu_3 = \sqrt{7 \pi^2 + (3 \pi)^2} = 4 \pi$
+
+Finally, $B_3 = \frac{1}{4 \pi}$
+
+$$u(x,t) = \frac{1}{4 \pi} \sin(3 \pi x) \sin(4 \pi t)$$
+
+\hfill
+
+Sketch the solution for $t = \frac{3}{8} \Rightarrow u(x, \frac{3}{8}) = \frac{-1}{4 \pi} \sin(3 \pi x)$
+
+\begin{center}
+    \includegraphics[width = 0.8 \textwidth]{12.png}
+\end{center}
+
+
+
+
+
+
+
+
+
 
 
 
