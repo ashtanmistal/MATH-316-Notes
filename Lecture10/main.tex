@@ -180,23 +180,15 @@ $Q$ is a source (or sink) of heat.
 
 Let $p = 8940 \frac{kg}{m^3}$, $c_p = 914 \frac{J}{kg \cdot C}$, $k = 930 \frac{W}{m \cdot C}$ $L = 10 m$
 
-Boundary conditions:
+Boundary conditions are $T(10,t) = 30, \quad T(0,t) = 30$
 
-$$\begin{matrix} T(10,t) = 30 \\ T(0,t) = 30 \end{matrix}$$
+Initial conditions:
 
-Initial conditons:
-
-$$T(x,0) = 30$$
-
-$$Q(x) = 80000 x$$
+$$T(x,0) = 30, \quad Q(x) = 80000 x$$
 
 Solution:
 
-$$\frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2} + q(x)$$
-
-$$\alpha = \frac{k}{\rho c_p} \approx 10^{-4}$$
-
-$$q(x) = \frac{Q(x)}{\rho c_p} = 0.01 x$$
+$$\frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2} + q(x); \quad \alpha = \frac{k}{\rho c_p} \approx 10^{-4}; \quad q(x) = \frac{Q(x)}{\rho c_p} = 0.01 x$$
 
 We need to write $u = T(x,t)$
 

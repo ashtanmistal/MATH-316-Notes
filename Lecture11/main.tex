@@ -15,12 +15,6 @@
 
 \graphicspath{{./Lecture11/}}
 
-\section{Introduction}
-
-\begin{itemize}
-    \item Check Canvas announcements regarding midterm and such (2 new announcements)
-\end{itemize}
-
 \section{Recap of Last Lecture}
 
 Last lecture, we finished up the heat / diffusion equation. 
@@ -31,16 +25,7 @@ Last lecture, we finished up the heat / diffusion equation.
     \item Developed general strategies for splitting inhomogeneous equations into a steady state (Which takes care of inhomogeneous parts, incl. boundary conditions) and a transient part (Satisfying a classic homogeneous diffusion equation)
 \end{itemize}
 
-\hfill
-
-Today's lecture is about a new equation: Wave equation. 
-
-Two methods to solve:
-
-\begin{itemize}
-    \item Applying separation of variables
-    \item We'll talk about the second method tomorrow
-\end{itemize}
+Today's lecture is about a new equation: Wave equation. Two methods to solve: The first one is applying separation of variables, and the second one is a method that we'll discuss tomorrow. 
 
 \section{Wave equation}
 
@@ -118,7 +103,7 @@ The idea is to split the solution into two parts.
 
 Solve problems 1 and 2: $y(x,t) = w(x,t) + z(x,t)$
 
-\subsection{Step 1: Solving Problem 1}
+\subsection*{Step 1: Solving Problem 1}
 
 $$w(x,t) = X(x) T(t) \underbrace{\Rightarrow}_{\text{Substitute into PDE}} X \ddot{T} = a^2 X'' T$$
 
@@ -140,9 +125,7 @@ Therefore, the eigenvalue problem for $X(x)$ is exactly as for heat / diffusion 
 
 Therefore:
 
-$$\lambda = \lambda_n = \left( \frac{n \pi}{L} \right)^2$$
-
-and $$X_n (x) = \sin \left(\frac{n \pi x}{L} \right)$$
+$$\lambda = \lambda_n = \left( \frac{n \pi}{L} \right)^2, \quad X_n (x) = \sin \left(\frac{n \pi x}{L} \right)$$
 
 where $n \in \NN$ (Natural numbers; 1,2,3,...)
 
@@ -190,7 +173,7 @@ We know this series converges, so we match up the coefficients.
 
 $$\Rightarrow w(x,t) = \sum_{n = 1}^\infty b_n \frac{L}{n \pi a} \sin \left( \frac{n \pi x}{L} \right) \sin \left( \frac{n \pi a t}{L} \right) $$
 
-\subsection{Step 2: Solving Problem 2}
+\subsection*{Step 2: Solving Problem 2}
 
 $$z_{tt} = a^2 z_{xx}$$
 
@@ -204,10 +187,7 @@ $$z(x,t) = X(x) T(t)$$
 
 The solution for the eigenvalue problem is a P1 problem again. 
 
-$$X_n(x) = \sin \left( \frac{n \pi x}{L} \right)$$
-\begin{center}
-    $\lambda_n = \left( \frac{n \pi}{L} \right)^2$ for $n \in \NN$
-\end{center}
+$$X_n(x) = \sin \left( \frac{n \pi x}{L} \right), \quad \lambda_n = \left( \frac{n \pi}{L} \right)^2 \text{ for } n \in \NN$$
 
 
 For the IVP part, 
@@ -234,7 +214,7 @@ Suppose we compute the Fourier sine series for $f(x)$, Then, $$b_n' = \frac{2}{L
 
 $$\Rightarrow z(x,t) = \sum_{n = 1}^\infty b_n' \sin \left( \frac{n \pi x}{L} \right) \cos \left( \frac{n \pi a}{L} t \right)$$
 
-\subsection{Step 3}
+\subsection*{Step 3}
 
 $$y(x,t) = x(x,t) + z(x,t)$$
 
