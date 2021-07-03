@@ -42,7 +42,7 @@ $$y(x) = y(0) + \frac{y'(0)}{1} x + \frac{y''(0)}{2!} x^2 + ...$$
 $$y(x) = C \left[ 1-x+\frac{3}{2} x^2 - \frac{7}{6} x^3 + ... \right]$$
 
 
-Note that we factored C out of the taylor expansion. Moving forward, assume $y(x) = \sum_{n = 0}^{\infty} a_n x^n$. 
+Note that we factored C out of the Taylor expansion. Moving forward, assume $y(x) = \sum_{n = 0}^{\infty} a_n x^n$. 
 
 $$y' + (1 - 2x) y = 0$$
 
@@ -96,7 +96,7 @@ Solving this using integrating factor method, we find the following:
 
 $$\mu(x) = e^{\int \frac{1-x}{x} dx} = e^{2 \ln x - x} = x^2 e^{-x}$$
 
-$$\left[x^2 e^{-x} y \right]' = 0 \rightarrow y = \frac{C}{x^2 e^{-x}} = C x^-2 e^x$$
+$$\left[x^2 e^{-x} y \right]' = 0 \rightarrow y = \frac{C}{x^2 e^{-x}} = C x^{-2} e^x$$
 
 %\includegraphics[width = 0.9 \textwidth]{image3.png}
 
@@ -104,7 +104,7 @@ $$\quad y(x) = \sum_{n = 1}^\infty a_n x^n, \quad y' = \sum_{n=1}^\infty a_n n x
 
 $$xy' + 2y - xy = 0$$
 
-$$\sum_{n = 1}^{\infty} a_n n x^n + 2 \sum_{n = 0}^{\infty} a_n x^n - \sum_{n = 0}^{\infty} a_n x^n+1 = 0$$
+$$\sum_{n = 1}^{\infty} a_n n x^n + 2 \sum_{n = 0}^{\infty} a_n x^n - \sum_{n = 0}^{\infty} a_n x^{n+1} = 0$$
 
 %\includegraphics[width = 0.9 \textwidth]{image4.png}
 
